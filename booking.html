@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#0d0008"/>
+<title>Book Appointment | Leah's African Hairbraiding Salon</title>
+<meta name="description" content="Book your hair braiding appointment at Leah's African Hairbraiding Salon in Madison, WI. Knotless braids, cornrows, boho braids & more."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#0d0008;
+  --black2:#180010;
+  --black3:#220018;
+  --black4:#2e0022;
+  --purple:#e91e8c;
+  --purple2:#c0156e;
+  --purple3:#f472b6;
+  --purple4:#ffd6ec;
+  --white:#fff0f8;
+  --white2:#ffe4f4;
+  --grey:#c06090;
+  --greyl:#f0a0cc;
+  --gold:#c9a84c;
+  --gold2:#a07830;
+  --gold3:#e8c878;
+  --lg:0 4px 0 var(--purple2),0 8px 24px rgba(233,30,140,.45);
+  --lx:0 8px 0 rgba(0,0,0,.8),0 14px 48px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--black);color:var(--white);min-height:100vh;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;line-height:1.1;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+.book-nav{
+  background:rgba(13,0,8,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(233,30,140,.2);
+  padding:0 24px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:99;
+}
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--greyl);font-size:.8rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 16px;border:1px solid rgba(233,30,140,.2);
+  border-radius:2px;transition:all .2s;
+}
+.back-btn:hover{border-color:var(--purple3);color:var(--purple3);}
+.book-nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--purple3);font-weight:600;letter-spacing:.04em;}
+.book-nav-phone{font-size:.8rem;color:var(--greyl);font-weight:500;}
+.book-nav-phone a{color:var(--purple3);}
+
+/* PAGE LAYOUT */
+.book-page{max-width:1100px;margin:0 auto;padding:60px 24px 80px;display:grid;grid-template-columns:400px 1fr;gap:60px;align-items:start;}
+
+/* LEFT SIDE INFO */
+.book-left{}
+.book-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.book-eyebrow span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple3);font-weight:600;}
+.ey-line{width:28px;height:1px;background:linear-gradient(90deg,var(--purple2),var(--purple3));}
+.book-h1{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:8px;font-weight:600;line-height:.95;}
+.book-h1 span{color:var(--purple3);font-style:italic;}
+.book-tagline{font-size:.92rem;color:var(--grey);line-height:1.75;margin-bottom:36px;font-weight:300;}
+
+.binfo-items{display:flex;flex-direction:column;gap:0;}
+.binfo-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 0;
+  border-bottom:1px solid rgba(233,30,140,.1);
+}
+.binfo-item:last-child{border-bottom:none;}
+.binfo-icon{
+  width:40px;height:40px;
+  background:rgba(233,30,140,.1);
+  border:1px solid rgba(233,30,140,.25);
+  border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.binfo-title{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:2px;}
+.binfo-sub{font-size:.78rem;color:var(--grey);line-height:1.5;font-weight:300;}
+
+.book-divider{height:1px;background:linear-gradient(90deg,transparent,var(--purple2),var(--purple3),var(--purple2),transparent);margin:36px 0;}
+
+/* FORM CARD */
+.book-form-card{
+  background:var(--black3);
+  border:1px solid rgba(233,30,140,.2);
+  border-radius:3px;
+  padding:44px 40px;
+  position:relative;overflow:hidden;
+}
+.book-form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--purple2),var(--purple3),var(--purple2),transparent);
+}
+.form-title{font-size:2rem;color:var(--white);margin-bottom:6px;font-weight:600;}
+.form-sub{font-size:.83rem;color:var(--grey);margin-bottom:32px;line-height:1.5;}
+
+/* FORM FIELDS */
+.f-row{margin-bottom:20px;}
+.f-row label{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--greyl);margin-bottom:8px;font-weight:600;}
+.f-row input,.f-row select{
+  width:100%;padding:13px 16px;
+  background:rgba(13,0,8,.7);
+  border:1px solid rgba(233,30,140,.2);
+  border-radius:2px;
+  font-family:'Jost',sans-serif;font-size:.92rem;color:var(--white);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  min-height:48px;-webkit-appearance:none;
+}
+.f-row input:focus,.f-row select:focus{
+  border-color:var(--purple3);
+  box-shadow:0 0 0 3px rgba(233,30,140,.12);
+}
+.f-row select option{background:var(--black2);}
+.f-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+/* STEPS */
+.steps{display:flex;gap:0;margin-bottom:36px;border:1px solid rgba(233,30,140,.15);border-radius:3px;overflow:hidden;}
+.step{flex:1;padding:12px 8px;text-align:center;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.3);cursor:pointer;border-right:1px solid rgba(233,30,140,.1);transition:all .2s;position:relative;}
+.step:last-child{border-right:none;}
+.step.active{background:rgba(233,30,140,.15);color:var(--purple3);}
+.step.done{color:rgba(233,30,140,.6);}
+.step-num{display:block;font-size:1rem;font-family:'Cormorant Garamond',serif;margin-bottom:2px;font-weight:700;}
+
+/* STEP PANELS */
+.step-panel{display:none;}
+.step-panel.active{display:block;}
+
+/* CALENDAR */
+.cal-wrap{margin-bottom:4px;}
+.cal-label{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--greyl);margin-bottom:10px;font-weight:600;}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.cal-month{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);font-weight:600;}
+.cal-nav{background:none;border:1px solid rgba(233,30,140,.25);color:var(--purple3);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;font-family:inherit;}
+.cal-nav:hover{background:rgba(233,30,140,.15);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-dow{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);text-align:center;padding:6px 0;font-weight:600;}
+.cal-day{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;border-radius:2px;cursor:pointer;
+  color:var(--greyl);font-weight:500;
+  transition:background .15s,color .15s;
+  border:1px solid transparent;
+}
+.cal-day:hover:not(.cal-empty):not(.cal-past):not(.cal-sunday){background:rgba(233,30,140,.18);color:var(--white);}
+.cal-day.cal-today{border-color:rgba(233,30,140,.45);color:var(--purple3);font-weight:700;}
+.cal-day.cal-selected{background:var(--purple)!important;color:var(--white)!important;font-weight:700;box-shadow:0 2px 8px rgba(233,30,140,.4);}
+.cal-day.cal-past{color:rgba(255,255,255,.15);cursor:not-allowed;}
+.cal-day.cal-empty{cursor:default;}
+.cal-day.cal-sunday{color:rgba(255,100,150,.25);cursor:not-allowed;}
+
+/* TIME SLOTS */
+.slots-wrap{margin-top:18px;padding-top:18px;border-top:1px solid rgba(233,30,140,.1);}
+.slots-label{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--greyl);margin-bottom:10px;display:block;font-weight:600;}
+.slots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
+.slot{
+  padding:9px 4px;text-align:center;
+  font-size:.74rem;font-weight:600;
+  border:1px solid rgba(233,30,140,.18);
+  border-radius:2px;cursor:pointer;color:var(--greyl);
+  transition:all .15s;font-family:'Jost',sans-serif;
+}
+.slot:hover{background:rgba(233,30,140,.12);color:var(--white);border-color:rgba(233,30,140,.4);}
+.slot.slot-selected{background:var(--purple);color:var(--white);border-color:var(--purple);box-shadow:0 2px 8px rgba(233,30,140,.35);}
+
+/* SPECIAL REQUESTS */
+.spec-section{margin-bottom:4px;}
+.spec-title{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--greyl);margin-bottom:14px;font-weight:600;display:block;}
+.spec-group{margin-bottom:18px;}
+.spec-group-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--purple3);margin-bottom:8px;font-weight:700;display:block;}
+.spec-options{display:flex;flex-wrap:wrap;gap:7px;}
+.spec-opt{
+  padding:8px 16px;font-size:.78rem;font-weight:600;
+  border:1px solid rgba(233,30,140,.2);border-radius:20px;
+  cursor:pointer;color:var(--greyl);
+  transition:all .15s;font-family:'Jost',sans-serif;
+  user-select:none;
+}
+.spec-opt:hover{background:rgba(233,30,140,.1);color:var(--white);border-color:rgba(233,30,140,.4);}
+.spec-opt.spec-selected{background:var(--purple);color:var(--white);border-color:var(--purple);box-shadow:0 2px 8px rgba(233,30,140,.3);}
+
+/* STEP NAV BUTTONS */
+.step-btns{display:flex;gap:12px;margin-top:28px;}
+.btn-next{
+  flex:1;background:var(--purple);color:var(--white);
+  border:none;padding:15px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  box-shadow:var(--lg);transition:background .2s,transform .12s;
+}
+.btn-next:hover{background:var(--purple3);color:var(--black);}
+.btn-next:active{transform:translateY(2px);}
+.btn-back-step{
+  background:transparent;color:var(--greyl);
+  border:1px solid rgba(233,30,140,.2);padding:15px 24px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-weight:600;font-size:.78rem;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  transition:all .2s;
+}
+.btn-back-step:hover{border-color:var(--purple3);color:var(--purple3);}
+
+/* ORDER SUMMARY */
+.summary-card{
+  background:rgba(233,30,140,.06);
+  border:1px solid rgba(233,30,140,.15);
+  border-radius:2px;padding:24px;margin-bottom:20px;
+}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(233,30,140,.08);font-size:.88rem;}
+.summary-row:last-child{border-bottom:none;}
+.summary-label{color:var(--grey);font-weight:500;}
+.summary-val{color:var(--white);font-weight:600;text-align:right;max-width:60%;}
+
+/* SUCCESS */
+.book-success{display:none;text-align:center;padding:60px 20px;}
+.book-success.show{display:block;}
+.bs-icon{font-size:4rem;display:block;margin-bottom:20px;animation:bs-pop .6s cubic-bezier(.34,1.56,.64,1);}
+@keyframes bs-pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.bs-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--purple3);margin-bottom:12px;}
+.bs-text{font-size:.92rem;color:var(--grey);line-height:1.8;max-width:400px;margin:0 auto;}
+.bs-text a{color:var(--purple3);font-weight:600;}
+.form-note{font-size:.72rem;color:var(--grey);margin-top:10px;text-align:center;line-height:1.5;}
+
+/* RESPONSIVE */
+@media(max-width:900px){.book-page{grid-template-columns:1fr;gap:40px;}.book-left{order:2;}.book-form-card{order:1;}}
+@media(max-width:600px){.book-form-card{padding:28px 20px;}.f-2{grid-template-columns:1fr;}.slots-grid{grid-template-columns:repeat(3,1fr);}.book-nav-phone{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="book-nav">
+  <a href="index.html" class="back-btn">&#8592; Back to Home</a>
+  <div class="book-nav-title">Book Appointment</div>
+  <div class="book-nav-phone">Questions? <a href="tel:6086698502">(608) 669-8502</a></div>
+</nav>
+
+<!-- PAGE -->
+<div class="book-page">
+
+  <!-- LEFT INFO -->
+  <div class="book-left">
+    <div class="book-eyebrow"><div class="ey-line"></div><span>Leah's Salon</span></div>
+    <h1 class="book-h1">Book Your<br><span>Appointment</span></h1>
+    <p class="book-tagline">Choose your style, pick a date and time, and customize your look. Leah will confirm within 24 hours.</p>
+    <div class="binfo-items">
+      <div class="binfo-item">
+        <div class="binfo-icon">📞</div>
+        <div>
+          <div class="binfo-title">(608) 669-8502</div>
+          <div class="binfo-sub">Call or text to book directly</div>
+        </div>
+      </div>
+      <div class="binfo-item">
+        <div class="binfo-icon">📍</div>
+        <div>
+          <div class="binfo-title">2346 E Washington Ave</div>
+          <div class="binfo-sub">Madison, WI 53704</div>
+        </div>
+      </div>
+      <div class="binfo-item">
+        <div class="binfo-icon">🕐</div>
+        <div>
+          <div class="binfo-title">Mon – Sat: 8:30 AM – 9:30 PM</div>
+          <div class="binfo-sub">Sunday: Closed</div>
+        </div>
+      </div>
+      <div class="binfo-item">
+        <div class="binfo-icon">✦</div>
+        <div>
+          <div class="binfo-title">Hair Included Options Available</div>
+          <div class="binfo-sub">Ask about hair pricing when you book</div>
+        </div>
+      </div>
+    </div>
+    <div class="book-divider"></div>
+    <p style="font-size:.82rem;color:var(--grey);line-height:1.75;font-weight:300;">All appointments are subject to availability. We will call you within 24 hours to confirm your booking. Walk-ins welcome based on availability.</p>
+  </div>
+
+  <!-- FORM -->
+  <div>
+    <div class="book-form-card" id="booking-form">
+      <!-- Netlify hidden form -->
+      <form id="netlify-book-form" name="leahs-bookings" netlify netlify-honeypot="bot-field" style="display:none;">
+        <input type="hidden" name="form-name" value="leahs-bookings"/>
+        <input type="hidden" name="bot-field"/>
+        <input type="hidden" id="bf-name" name="name"/>
+        <input type="hidden" id="bf-phone" name="phone"/>
+        <input type="hidden" id="bf-service" name="service"/>
+        <input type="hidden" id="bf-date" name="preferred-date"/>
+        <input type="hidden" id="bf-time" name="preferred-time"/>
+        <input type="hidden" id="bf-size" name="size"/>
+        <input type="hidden" id="bf-length" name="length"/>
+        <input type="hidden" id="bf-addons" name="add-ons"/>
+      </form>
+
+      <h2 class="form-title">Request Appointment ✦</h2>
+      <p class="form-sub">Complete all 3 steps to submit your booking request.</p>
+
+      <!-- STEP INDICATORS -->
+      <div class="steps">
+        <div class="step active" id="step-ind-1"><span class="step-num">1</span>Your Info</div>
+        <div class="step" id="step-ind-2"><span class="step-num">2</span>Date & Time</div>
+        <div class="step" id="step-ind-3"><span class="step-num">3</span>Preferences</div>
+      </div>
+
+      <!-- STEP 1: Personal Info -->
+      <div class="step-panel active" id="step-panel-1">
+        <div class="f-2">
+          <div class="f-row"><label>First Name *</label><input type="text" id="bf-first" placeholder="Jane"/></div>
+          <div class="f-row"><label>Last Name</label><input type="text" id="bf-last" placeholder="Smith"/></div>
+        </div>
+        <div class="f-row"><label>Phone Number *</label><input type="tel" id="bf-ph" placeholder="(608) 555-0000"/></div>
+        <div class="f-row">
+          <label>Service *</label>
+          <select id="bf-svc">
+            <option value="">Select a service...</option>
+            <option>Knotless Box Braids</option>
+            <option>Feed-In Cornrows</option>
+            <option>Boho Braids</option>
+            <option>Stitch Braids</option>
+            <option>Tribal / Fulani Braids</option>
+            <option>Kids Braids</option>
+            <option>Other — I'll describe below</option>
+          </select>
+        </div>
+        <div class="step-btns">
+          <button type="button" class="btn-next" onclick="goStep(2)">Continue &#8250;</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Date & Time -->
+      <div class="step-panel" id="step-panel-2">
+        <div class="cal-wrap">
+          <span class="cal-label">Select a Date *</span>
+          <div class="cal-header">
+            <button type="button" class="cal-nav" onclick="calPrev()">&#8249;</button>
+            <div class="cal-month" id="cal-month-label"></div>
+            <button type="button" class="cal-nav" onclick="calNext()">&#8250;</button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+          <div class="slots-wrap" id="slots-wrap" style="display:none;">
+            <span class="slots-label">Select a Time *</span>
+            <div class="slots-grid" id="slots-grid"></div>
+          </div>
+        </div>
+        <div class="step-btns">
+          <button type="button" class="btn-back-step" onclick="goStep(1)">&#8592; Back</button>
+          <button type="button" class="btn-next" onclick="goStep(3)">Continue &#8250;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Preferences -->
+      <div class="step-panel" id="step-panel-3">
+        <div class="spec-section">
+          <span class="spec-title">Special Requests</span>
+          <div class="spec-group">
+            <span class="spec-group-label">Size</span>
+            <div class="spec-options">
+              <div class="spec-opt" onclick="toggleOpt(this,'size')">Small</div>
+              <div class="spec-opt" onclick="toggleOpt(this,'size')">Medium</div>
+              <div class="spec-opt" onclick="toggleOpt(this,'size')">Large</div>
+              <div class="spec-opt" onclick="toggleOpt(this,'size')">Jumbo</div>
+            </div>
+          </div>
+          <div class="spec-group">
+            <span class="spec-group-label">Length</span>
+            <div class="spec-options">
+              <div class="spec-opt" onclick="toggleOpt(this,'length')">Shoulder</div>
+              <div class="spec-opt" onclick="toggleOpt(this,'length')">Mid-Back</div>
+              <div class="spec-opt" onclick="toggleOpt(this,'length')">Butt-Length</div>
+            </div>
+          </div>
+          <div class="spec-group">
+            <span class="spec-group-label">Add-Ons <span style="font-size:.6rem;color:var(--grey);text-transform:none;letter-spacing:0;font-weight:400;">(select all that apply)</span></span>
+            <div class="spec-options">
+              <div class="spec-opt addon-opt" onclick="toggleAddon(this)">Take Down</div>
+              <div class="spec-opt addon-opt" onclick="toggleAddon(this)">Wash / Blow Dry</div>
+              <div class="spec-opt addon-opt" onclick="toggleAddon(this)">Touch Up</div>
+              <div class="spec-opt addon-opt" onclick="toggleAddon(this)">Colors</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="summary-card" id="order-summary"></div>
+
+        <div class="step-btns">
+          <button type="button" class="btn-back-step" onclick="goStep(2)">&#8592; Back</button>
+          <button type="button" class="btn-next" onclick="submitBooking()">✦ Confirm Booking</button>
+        </div>
+        <p class="form-note">We'll call you within 24 hours to confirm.</p>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="book-success" id="book-success">
+      <span class="bs-icon">🌸</span>
+      <h3 class="bs-title">Booking Request Sent!</h3>
+      <p class="bs-text">
+        Thank you! Leah will call you within 24 hours to confirm your appointment.<br><br>
+        Questions? Call or text:<br>
+        <a href="tel:6086698502">(608) 669-8502</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STEPS ──
+var currentStep = 1;
+function goStep(n) {
+  if(n===2){
+    var first=document.getElementById('bf-first').value.trim();
+    var phone=document.getElementById('bf-ph').value.trim();
+    var svc=document.getElementById('bf-svc').value;
+    if(!first||!phone||!svc){alert('Please fill in your name, phone number and service.');return;}
+  }
+  if(n===3){
+    if(!selDate){alert('Please select a date.');return;}
+    if(!selTime){alert('Please select a time slot.');return;}
+    buildSummary();
+  }
+  document.getElementById('step-panel-'+currentStep).classList.remove('active');
+  document.getElementById('step-ind-'+currentStep).classList.remove('active');
+  document.getElementById('step-ind-'+currentStep).classList.add('done');
+  currentStep=n;
+  document.getElementById('step-panel-'+n).classList.add('active');
+  document.getElementById('step-ind-'+n).classList.add('active');
+  document.getElementById('step-ind-'+n).classList.remove('done');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildSummary(){
+  var s='';
+  var rows=[
+    ['Name', document.getElementById('bf-first').value+' '+document.getElementById('bf-last').value],
+    ['Phone', document.getElementById('bf-ph').value],
+    ['Service', document.getElementById('bf-svc').value],
+    ['Date', selDate?selDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}):'—'],
+    ['Time', selTime||'—'],
+  ];
+  rows.forEach(function(r){
+    s+='<div class="summary-row"><span class="summary-label">'+r[0]+'</span><span class="summary-val">'+r[1]+'</span></div>';
+  });
+  document.getElementById('order-summary').innerHTML=s;
+}
+
+// ── CALENDAR ──
+var calDate=new Date();
+var selDate=null, selTime=null;
+var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var SLOTS=['8:30 AM','9:30 AM','10:30 AM','11:30 AM','12:30 PM','1:30 PM','2:30 PM','3:30 PM','4:30 PM','5:30 PM','6:30 PM','7:30 PM'];
+
+function renderCal(){
+  var y=calDate.getFullYear(), m=calDate.getMonth();
+  document.getElementById('cal-month-label').textContent=MONTHS[m]+' '+y;
+  var grid=document.getElementById('cal-grid');
+  grid.innerHTML='';
+  DAYS.forEach(function(d){var el=document.createElement('div');el.className='cal-dow';el.textContent=d;grid.appendChild(el);});
+  var first=new Date(y,m,1).getDay();
+  var days=new Date(y,m+1,0).getDate();
+  var today=new Date();today.setHours(0,0,0,0);
+  for(var i=0;i<first;i++){var e=document.createElement('div');e.className='cal-day cal-empty';grid.appendChild(e);}
+  for(var d2=1;d2<=days;d2++){
+    var e2=document.createElement('div');
+    e2.className='cal-day';
+    e2.textContent=d2;
+    var thisDate=new Date(y,m,d2);
+    var isSun=thisDate.getDay()===0;
+    var isPast=thisDate<today;
+    if(isSun) e2.classList.add('cal-sunday');
+    else if(isPast) e2.classList.add('cal-past');
+    else{
+      if(thisDate.toDateString()===today.toDateString()) e2.classList.add('cal-today');
+      if(selDate&&thisDate.toDateString()===selDate.toDateString()) e2.classList.add('cal-selected');
+      e2.addEventListener('click',(function(dt,el2){return function(){
+        selDate=dt;selTime=null;
+        document.querySelectorAll('.cal-day').forEach(function(x){x.classList.remove('cal-selected');});
+        el2.classList.add('cal-selected');
+        renderSlots();
+      };})(new Date(thisDate),e2));
+    }
+    grid.appendChild(e2);
+  }
+}
+
+function renderSlots(){
+  var wrap=document.getElementById('slots-wrap');
+  var grid=document.getElementById('slots-grid');
+  if(!selDate){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  grid.innerHTML='';
+  SLOTS.forEach(function(s){
+    var el=document.createElement('div');
+    el.className='slot';el.textContent=s;
+    el.addEventListener('click',function(){
+      selTime=s;
+      document.querySelectorAll('.slot').forEach(function(x){x.classList.remove('slot-selected');});
+      el.classList.add('slot-selected');
+    });
+    grid.appendChild(el);
+  });
+}
+
+function calPrev(){calDate.setMonth(calDate.getMonth()-1);renderCal();}
+function calNext(){calDate.setMonth(calDate.getMonth()+1);renderCal();}
+
+// Only render calendar when step 2 is visible
+function renderCalIfVisible(){
+  if(document.getElementById('cal-month-label')) renderCal();
+}
+
+// Init calendar when step 2 becomes active
+var _origGoStep = goStep;
+goStep = function(n){
+  _origGoStep(n);
+  if(n===2) setTimeout(renderCal, 50);
+};
+
+// Safe init on load
+document.addEventListener('DOMContentLoaded', function(){
+  if(document.getElementById('cal-month-label')) renderCal();
+});
+
+// ── SPECIAL REQUESTS ──
+var selectedOpts={size:null,length:null,addons:[]};
+function toggleOpt(el,cat){
+  var siblings=el.parentElement.querySelectorAll('.spec-opt');
+  siblings.forEach(function(s){s.classList.remove('spec-selected');});
+  el.classList.add('spec-selected');
+  selectedOpts[cat]=el.textContent;
+}
+function toggleAddon(el){
+  el.classList.toggle('spec-selected');
+  var addons=[];
+  document.querySelectorAll('.addon-opt.spec-selected').forEach(function(e){addons.push(e.textContent.trim());});
+  selectedOpts.addons=addons;
+}
+
+// ── SUBMIT ──
+function submitBooking(){
+  var first=document.getElementById('bf-first').value.trim();
+  var phone=document.getElementById('bf-ph').value.trim();
+  var svc=document.getElementById('bf-svc').value;
+  document.getElementById('bf-name').value=first+' '+document.getElementById('bf-last').value;
+  document.getElementById('bf-phone').value=phone;
+  document.getElementById('bf-service').value=svc;
+  document.getElementById('bf-date').value=selDate?selDate.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
+  document.getElementById('bf-time').value=selTime||'';
+  document.getElementById('bf-size').value=selectedOpts.size||'Not specified';
+  document.getElementById('bf-length').value=selectedOpts.length||'Not specified';
+  document.getElementById('bf-addons').value=selectedOpts.addons.length?selectedOpts.addons.join(', '):'None';
+  var formData=new FormData(document.getElementById('netlify-book-form'));
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(formData).toString()}).catch(function(e){console.log(e);});
+  document.getElementById('booking-form').style.display='none';
+  document.getElementById('book-success').classList.add('show');
+}
+</script>
+</body>
+</html>
