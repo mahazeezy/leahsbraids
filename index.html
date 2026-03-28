@@ -627,7 +627,7 @@ footer{background:var(--black);border-top:1px solid rgba(233,30,140,.15);padding
   .hero-wrap{grid-template-columns:1fr;gap:48px;}
   .hero-images{height:420px;}
   .booking-layout{grid-template-columns:1fr;}
-  .hours-layout{grid-template-columns:1fr;}
+  .hours-layout{grid-template-columns:1fr 1fr;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);}
   .gcard:nth-child(1){grid-row:span 1;}
   .services-grid{grid-template-columns:1fr 1fr;}
@@ -636,20 +636,27 @@ footer{background:var(--black);border-top:1px solid rgba(233,30,140,.15);padding
 }
 @media(max-width:768px){
   .hamburger{display:flex;}
-  .hero-wrap{padding-top:20px;}
-  .hero-images{height:320px;}
+  .hero-wrap{padding-top:20px;gap:24px;}
+  .hero-images{height:260px;}
   .hi-main{width:85%;height:85%;}
   .hi-accent{width:55%;height:50%;}
-  section{padding:64px 0!important;}
-  .gallery-grid{grid-template-columns:1fr;}
-  .gcard:nth-child(1){aspect-ratio:3/4;}
-  .services-grid{grid-template-columns:1fr;}
-  .bform{padding:28px 20px;}
-  .f-2{grid-template-columns:1fr;}
-  .contact-cards{flex-direction:column;align-items:center;}
-  .footer-top{grid-template-columns:1fr;gap:28px;}
-  .footer-bottom{flex-direction:column;text-align:center;}
-  .hero-stats{gap:24px;}
+  section{padding:44px 0!important;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .gcard:nth-child(1){aspect-ratio:auto;grid-row:span 1;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .bform{padding:20px 16px;}
+  .f-2{grid-template-columns:1fr 1fr;}
+  .contact-cards{flex-direction:row;flex-wrap:wrap;justify-content:center;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:20px;}
+  .footer-bottom{flex-direction:row;text-align:left;justify-content:space-between;}
+  .hero-stats{gap:16px;flex-wrap:wrap;}
+  .reviews-grid{grid-template-columns:1fr 1fr;}
+  .hours-layout{grid-template-columns:1fr 1fr;gap:20px;}
+  .booking-layout{grid-template-columns:1fr;}
+  .section-title{font-size:clamp(1.6rem,5vw,2.4rem);}
+  .svc{padding:1.4rem;}
+  .slots-grid{grid-template-columns:repeat(3,1fr);}
+  .cal-grid{gap:2px;}
 }
 </style>
 </head>
@@ -1146,7 +1153,24 @@ window.addEventListener('load', function(){
 });
 
 // ── SCROLL ENTRANCE ANIMATIONS ──
-// Fire everything on load with staggered delays so effects are visible in preview too
+function runAnimations(){
+  var allReveal = document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-fade,.reveal-word,.reveal-clip,.reveal-line');
+  allReveal.forEach(function(el,i){
+    setTimeout(function(){ el.classList.add('visible'); }, i * 60);
+  });
+  document.querySelectorAll('.stagger').forEach(function(el,gi){
+    Array.from(el.children).forEach(function(child,i){
+      child.style.opacity='0';
+      child.style.transform='translateY(30px)';
+      child.style.transition='opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1)';
+      setTimeout(function(){ child.style.opacity='1'; child.style.transform='none'; }, 100 + gi*60 + i*100);
+    });
+  });
+}
+runAnimations();
+setTimeout(runAnimations, 200);
+setTimeout(runAnimations, 600);
+document.addEventListener('DOMContentLoaded', runAnimations);
 window.addEventListener('load', function(){
 
   // All reveal elements — fire with small stagger
