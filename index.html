@@ -679,6 +679,43 @@ footer{background:var(--black);border-top:1px solid rgba(233,30,140,.15);padding
 
 <div class="gold-bar"></div>
 
+<!-- BACK TO SCHOOL PROMO (auto-shows Aug 15 - Oct 1, 2026) -->
+<div id="promo-banner" class="promo-banner" style="display:none;">
+  <div class="promo-inner">
+    <span class="promo-text">&#10022; Back to School Special &mdash; Box Braids: Shoulder Length $100 &middot; Back Length $150 &#10022;</span>
+    <a href="booking.html" class="promo-cta">Book Now</a>
+    <button class="promo-close" id="promo-close" aria-label="Close promo">&times;</button>
+  </div>
+</div>
+<style>
+.promo-banner{background:linear-gradient(90deg,var(--purple2),var(--purple),var(--purple3));color:var(--white);text-align:center;padding:10px 44px 10px 16px;position:relative;}
+.promo-inner{max-width:1300px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;}
+.promo-text{font-size:.82rem;letter-spacing:.03em;font-weight:600;}
+.promo-cta{background:var(--gold3);color:var(--black);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:6px 14px;border-radius:3px;white-space:nowrap;}
+.promo-cta:hover{background:var(--gold4);}
+.promo-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--white);font-size:1.3rem;line-height:1;cursor:pointer;padding:4px 8px;}
+@media(max-width:520px){.promo-text{font-size:.72rem;}}
+</style>
+<script>
+(function(){
+  var start = new Date(2026,7,15,0,0,0);   // Aug 15, 2026
+  var end   = new Date(2026,9,1,23,59,59); // Oct 1, 2026, end of day
+  var now = new Date();
+  var banner = document.getElementById('promo-banner');
+  if(now >= start && now <= end && !sessionStorage.getItem('promoDismissed')){
+    banner.style.display = 'block';
+  }
+  var closeBtn = document.getElementById('promo-close');
+  if(closeBtn){
+    closeBtn.addEventListener('click', function(){
+      banner.style.display = 'none';
+      sessionStorage.setItem('promoDismissed','1');
+    });
+  }
+})();
+</script>
+
+
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
